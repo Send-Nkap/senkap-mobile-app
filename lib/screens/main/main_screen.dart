@@ -6,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
+import 'package:senkap/screens/login/login_screen.dart';
 import 'package:senkap/screens/main/pages/dashboard_page.dart';
 import 'package:senkap/screens/main/pages/profile_page.dart';
 import '../../controllers/bottom_nav_bar_controller.dart';
@@ -44,16 +45,12 @@ class MainScreen extends StatelessWidget {
       },
       child: Scaffold(
         backgroundColor: AppColors.white,
-        body:
-            GestureDetector(
-          onTap: () {
-            
-          },
+        body: GestureDetector(
+          onTap: () {},
           child: SafeArea(
             child: Stack(
               // crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-               
                 // Differents pages displayed on the main screen
                 NotificationListener<ScrollNotification>(
                   onNotification: (ScrollNotification scrollInfo) {
@@ -188,7 +185,7 @@ class MainScreen extends StatelessWidget {
                     }),
                   ),
                 ),
-                
+
                 // }),
                 AppBarComponent(),
                 Align(
@@ -270,6 +267,13 @@ class MainScreen extends StatelessWidget {
                                           children: [
                                             GestureDetector(
                                               onTap: () {
+                                                Get.to(
+                                                    () => const LoginScreen(),
+                                                    transition:
+                                                        Transition.cupertino,
+                                                    duration: const Duration(
+                                                        milliseconds: 500),
+                                                    curve: Curves.linear);
                                                 // _userController.logoutUser(context);
                                                 // Get.off(() => LoginScreen());
                                               },
@@ -279,8 +283,7 @@ class MainScreen extends StatelessWidget {
                                                         vertical: 15.0,
                                                         horizontal: 20.0),
                                                 decoration: BoxDecoration(
-                                                    color:
-                                                        AppColors.primaryText,
+                                                    color: AppColors.primary,
                                                     borderRadius:
                                                         BorderRadius.circular(
                                                             32.0)),
@@ -424,7 +427,6 @@ class MainScreen extends StatelessWidget {
                         )
                       : const SizedBox();
                 }),
-                
               ],
             ),
           ),
@@ -434,4 +436,3 @@ class MainScreen extends StatelessWidget {
     ;
   }
 }
-
