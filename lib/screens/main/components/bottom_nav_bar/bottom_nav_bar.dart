@@ -135,22 +135,6 @@ class BottomNavBar extends StatelessWidget {
                       );
                     }),
                   ),
-                  // InkWell(
-                  //   splashColor: Colors.transparent,
-                  //   focusColor: Colors.transparent,
-                  //   highlightColor: Colors.transparent,
-                  //   hoverColor: Colors.transparent,
-                  //   onTap: () {
-                  //     _bottomNavBarController.setPageIndex(4);
-                  //   },
-                  //   child: Obx(() {
-                  //     return BottomNavItem(
-                  //       title: "Support",
-                  //       icon: Assets.icons.service,
-                  //       isActive: _bottomNavBarController.pageIndex.value == 4,
-                  //     );
-                  //   }),
-                  // ),
                 ],
               ),
             ),

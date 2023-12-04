@@ -127,32 +127,6 @@ class AppBarComponent extends StatelessWidget {
                                 // size: 25.0,
                               ),
                             ),
-                            // GestureDetector(
-                            //   onTap: () {
-                            //     _bottomNavBarController
-                            //         .isOnTranfertMoneyScreen(false);
-                            //     _transactionController.clearAmount();
-                            //     Get.back();
-                            //   },
-                            //   child: Container(
-                            //     padding: const EdgeInsets.all(10.0),
-                            //     decoration: const BoxDecoration(
-                            //         color: AppColors.secondary,
-                            //         shape: BoxShape.circle),
-                            //     child: SvgPicture.asset(Assets.icons.arrowBack),
-                            //   ),
-                            // ),
-                            // Padding(
-                            //   padding: const EdgeInsets.only(left: 10.0),
-                            //   child: Text(
-                            //     "Transfer Money",
-                            //     style: AppStyles.textStyle(
-                            //       color: AppColors.primaryText,
-                            //       size: 18,
-                            //       weight: FontWeight.w600,
-                            //     ),
-                            //   ),
-                            // ),
                           ],
                         ),
                       if (_bottomNavBarController.pageIndex.value == 3)

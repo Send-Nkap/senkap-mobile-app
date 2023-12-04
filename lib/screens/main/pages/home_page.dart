@@ -136,45 +136,7 @@ class HomePage extends StatelessWidget {
               width: double.infinity,
               height: item.height,
               child: item.child,
-              // Column(
-              //   // crossAxisAlignment: CrossAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       "Your Balance is",
-              //       style: AppStyles.textStyle(
-              //         color: AppColors.secondaryText,
-              //         weight: FontWeight.w600,
-              //         size: 16,
-              //       ),
-              //     ),
-              //     Text(
-              //       "200 000 XAF",
-              //       style: AppStyles.textStyle(
-              //         color: AppColors.primaryText,
-              //         weight: FontWeight.w700,
-              //         size: 37,
-              //       ),
-              //     ),
-              //     Text(
-              //       "Today 14 Sept 2022",
-              //       style: AppStyles.textStyle(
-              //         color: AppColors.secondaryText,
-              //         weight: FontWeight.w600,
-              //         size: 16,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              //  Center(
-              //   child: Text(
-              //     item.title,
-              //     style: const TextStyle(
-              //       color: Colors.white,
-              //       fontSize: 24.0,
-              //       fontWeight: FontWeight.bold,
-              //     ),
-              //   ),
-              // ),
+              
             ),
           ),
         )
@@ -202,61 +164,8 @@ class HomePage extends StatelessWidget {
                   ),
                   floatingIndicator: false,
                 ),
-                // options: CarouselOptions(
-                //   // height: 400.0,
-                //   aspectRatio: 3, //16/9
-                //   viewportFraction: 1.0,
-                //   initialPage: 0,
-                //   enableInfiniteScroll: false,
-                //   reverse: false,
-                //   autoPlay: false,
-                //   autoPlayInterval: const Duration(seconds: 2),
-                //   autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                //   autoPlayCurve: Curves.fastOutSlowIn,
-                //   enlargeCenterPage: false,
-                //   // controller: CarouselController(),
-                //   onPageChanged: (index, reason) {},
-                //   pageSnapping: true,
-                //   scrollDirection: Axis.horizontal,
-                //   // pauseAutoPlayOnTouch: true,
-                //   // pauseAutoPlayOnManualNavigate: true,
-                //   // pauseAutoPlayInFiniteScroll: false,
-                //   enlargeStrategy: CenterPageEnlargeStrategy.scale,
-                //   disableCenter: false,
-                //   showIndicator: true,
-                //   // floatingIndicator = true,
-                //   slideIndicator: CircularSlideIndicator(),
                 // ),
-              )
-              //  Column(
-              //   // crossAxisAlignment: CrossAxisAlignment.center,
-              //   children: [
-              //     Text(
-              //       "Your Balance is",
-              //       style: AppStyles.textStyle(
-              //         color: AppColors.secondaryText,
-              //         weight: FontWeight.w600,
-              //         size: 16,
-              //       ),
-              //     ),
-              //     Text(
-              //       "200 000 XAF",
-              //       style: AppStyles.textStyle(
-              //         color: AppColors.primaryText,
-              //         weight: FontWeight.w700,
-              //         size: 37,
-              //       ),
-              //     ),
-              //     Text(
-              //       "Today 14 Sept 2022",
-              //       style: AppStyles.textStyle(
-              //         color: AppColors.secondaryText,
-              //         weight: FontWeight.w600,
-              //         size: 16,
-              //       ),
-              //     ),
-              //   ],
-              // ),
+              ),
               ),
           Padding(
             padding: EdgeInsets.symmetric(

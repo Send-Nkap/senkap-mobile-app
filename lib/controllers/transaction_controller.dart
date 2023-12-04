@@ -32,33 +32,6 @@ class TransactionController extends GetxController {
     }
   }
 
-  // void getContacts() async {
-  //   contacts.clear();
-  //   if (await Permission.contacts.request().isGranted) {
-  //     // Either the permission was already granted before or the user just granted it.
-  //     // Get all contacts without thumbnail (faster)
-  //     isContactAcessGranted(true);
-  //     List<Contact> newContacts =
-  //         (await ContactsService.getContacts(withThumbnails: false));
-  //     for (var contact in newContacts) {
-  //       if (contact.phones != null && contact.phones!.isNotEmpty) {
-  //         if (!contacts.contains(contact)) {
-  //           // contact.phones![0].value =
-  //           //     formatPhoneNumber(contact.phones![0].value!);
-  //           String newPhone = formatPhoneNumber(contact.phones![0].value!);
-  //           if (newPhone != "Invalid phone number format") {
-  //             contact.phones![0].value = newPhone;
-  //             contacts.add(contact);
-  //           }
-  //           print(contact.toMap());
-  //         }
-  //       }
-  //     }
-  //     newContacts.toSet();
-  //     // TODO: check if each contact is already on Senkap
-  //   }
-  // }
-
   @override
   void onInit() {
     clearAmount();

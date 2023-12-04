@@ -48,20 +48,6 @@ class ProfilePage extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Padding(
-                    //   padding: const EdgeInsets.only(top: 0.0),
-                    //   child: GestureDetector(
-                    //     onTap: () {
-                    //       // _topNavBarController.setPageIndex(0);
-                    //       // Get.offAll(MainScreen());
-                    //     },
-                    //     child: const Icon(
-                    //       FontAwesomeIcons.arrowLeft,
-                    //       color: AppColors.primaryText,
-                    //       // size: 25.0,
-                    //     ),
-                    //   ),
-                    // ),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       // mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -135,20 +135,6 @@ class HistoryPage extends StatelessWidget {
                 });
               })),
         ),
-        // SizedBox(
-        //     height: Constants.screenHeight(context) / 2.5,
-        //     width: Constants.screenWidth(context) / 1.5,
-        //     child: Center(
-        //         child: Text(
-        //       "Aucune transaction pour l'instant",
-        //       textAlign: TextAlign.center,
-        //       style: AppStyles.textStyle(
-        //         color: AppColors.primaryText,
-        //         size: 18.0,
-        //         weight: FontWeight.w500,
-        //       ),
-        //     )))
-        // : const SizedBox()
       ],
     );
   }
