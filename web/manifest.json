@@ -1,6 +1,6 @@
 {
-    "name": "send_nkap",
-    "short_name": "send_nkap",
+    "name": "senkap",
+    "short_name": "senkap",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

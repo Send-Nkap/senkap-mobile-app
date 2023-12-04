@@ -1,4 +1,4 @@
-# send_nkap
+# senkap
 
 African Eban mobile app
 

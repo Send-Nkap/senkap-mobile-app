@@ -1,11 +1,16 @@
+import 'dart:math';
+
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import 'package:keyboard_visibility_pro/keyboard_visibility_pro.dart';
-import 'package:send_nkap/screens/main/pages/dashboard_page.dart';
-import 'package:send_nkap/screens/main/pages/profile_page.dart';
+import 'package:senkap/screens/main/pages/dashboard_page.dart';
+import 'package:senkap/screens/main/pages/profile_page.dart';
 import '../../controllers/bottom_nav_bar_controller.dart';
+import '../../controllers/confetti_controller.dart';
+import '../../controllers/profile_controller.dart';
 import '../../controllers/tab_bar_controller.dart';
 import '../../gen/assets.gen.dart';
 import '../../ressources/app_colors.dart';
@@ -22,9 +27,14 @@ class MainScreen extends StatelessWidget {
   MainScreen({super.key});
   final BottomNavBarController _bottomNavBarController =
       Get.put(BottomNavBarController());
+  final ProfileController _profileController = Get.put(ProfileController());
+  final AppConfettiController _appConfettiController =
+      Get.put(AppConfettiController());
   // final FormController _formController = Get.put(FormController());
   // final TransactionController _transactionController =
   //     Get.put(TransactionController());
+  ConfettiController controllerTopCenter =
+      ConfettiController(duration: const Duration(seconds: 2));
   @override
   Widget build(BuildContext context) {
     return KeyboardVisibility(
@@ -1479,7 +1489,239 @@ class MainScreen extends StatelessWidget {
                 //       : const SizedBox();
                 // }),
                 AppBarComponent(),
+                Align(
+                  alignment: Alignment.topCenter,
+                  child: ConfettiWidget(
+                    confettiController:
+                        _appConfettiController.controllerTopCenter,
+                    blastDirection: pi / 5000000000000000000,
+                    maxBlastForce: 5, // set a lower max blast force
+                    minBlastForce: 1, // set a lower min blast force
+                    emissionFrequency: 0.05,
+                    numberOfParticles: 100, // a lot of particles at once
+                    gravity: 0,
+
+                    blastDirectionality: BlastDirectionality
+                        .explosive, // don't specify a direction, blast randomly
+                    shouldLoop:
+                        false, // start again as soon as the animation is finished
+                    colors: const [
+                      Colors.green,
+                      Colors.blue,
+                      Colors.pink,
+                      Colors.orange,
+                      Colors.purple
+                    ], // manually specify the colors to be used
+                    // createParticlePath: _appConfettiController
+                    //     .drawStar, // define a custom shape/path.
+                  ),
+                ),
                 BottomNavBar(),
+
+                Obx(() {
+                  return _profileController.isLogOutBottomSheetShow.value ||
+                          _profileController.isLanguageBottomSheetShow.value
+                      ? Align(
+                          alignment: Alignment.bottomCenter,
+                          child: IntrinsicHeight(
+                            child: Container(
+                              padding: const EdgeInsets.only(
+                                  top: 32.0,
+                                  left: 20.0,
+                                  right: 20.0,
+                                  bottom: 50.0),
+                              decoration: const BoxDecoration(
+                                  color: AppColors.white,
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Color(0x33000000),
+                                      blurRadius: 24,
+                                      offset: Offset(0, -12),
+                                      spreadRadius: 0,
+                                    )
+                                  ],
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(26.0),
+                                      topRight: Radius.circular(26.0))),
+                              child: _profileController
+                                      .isLogOutBottomSheetShow.value
+                                  ? Column(
+                                      children: [
+                                        Padding(
+                                          padding: const EdgeInsets.only(
+                                              bottom: 18.0),
+                                          child: Text(
+                                            "Déconnecter ?",
+                                            textAlign: TextAlign.center,
+                                            style: AppStyles.textStyle(
+                                              color: AppColors.primaryText,
+                                              size: 27.0,
+                                              weight: FontWeight.w700,
+                                            ),
+                                          ),
+                                        ),
+                                        Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            GestureDetector(
+                                              onTap: () {
+                                                // _userController.logoutUser(context);
+                                                // Get.off(() => LoginScreen());
+                                              },
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 15.0,
+                                                        horizontal: 20.0),
+                                                decoration: BoxDecoration(
+                                                    color:
+                                                        AppColors.primaryText,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            32.0)),
+                                                child: Text(
+                                                  "Continuer",
+                                                  textAlign: TextAlign.center,
+                                                  style: AppStyles.textStyle(
+                                                    color: AppColors.white,
+                                                    size: 16.0,
+                                                    weight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                            const SizedBox(width: 30.0),
+                                            GestureDetector(
+                                              onTap: () {
+                                                _profileController
+                                                    .isLogOutBottomSheetShow(
+                                                        false);
+                                              },
+                                              child: Container(
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        vertical: 15.0,
+                                                        horizontal: 20.0),
+                                                decoration: BoxDecoration(
+                                                    color: AppColors.imputBg,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            32.0)),
+                                                child: Text(
+                                                  "Annuler",
+                                                  textAlign: TextAlign.center,
+                                                  style: AppStyles.textStyle(
+                                                    color:
+                                                        AppColors.primaryText,
+                                                    size: 16.0,
+                                                    weight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ],
+                                    )
+                                  : _profileController
+                                          .isLanguageBottomSheetShow.value
+                                      ? Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              onTap: () {
+                                                _profileController
+                                                    .selectedLanguage(
+                                                        "Français");
+                                                _profileController
+                                                    .isLanguageBottomSheetShow(
+                                                        false);
+                                              },
+                                              child: Row(
+                                                children: [
+                                                  Text(
+                                                    "FR",
+                                                    style: AppStyles.textStyle(
+                                                      color: AppColors
+                                                          .secondaryText,
+                                                      size: 14.0,
+                                                      weight: FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                  const SizedBox(width: 21.0),
+                                                  Text(
+                                                    "Français",
+                                                    style: AppStyles.textStyle(
+                                                      color:
+                                                          AppColors.primaryText,
+                                                      size: 14.0,
+                                                      weight: FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding: const EdgeInsets.only(
+                                                  top: 21.0),
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                onTap: () {
+                                                  _profileController
+                                                      .selectedLanguage(
+                                                          "Anglais");
+                                                  _profileController
+                                                      .isLanguageBottomSheetShow(
+                                                          false);
+                                                },
+                                                child: Row(
+                                                  children: [
+                                                    Text(
+                                                      "EN",
+                                                      style:
+                                                          AppStyles.textStyle(
+                                                        color: AppColors
+                                                            .secondaryText,
+                                                        size: 14.0,
+                                                        weight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                    const SizedBox(width: 21.0),
+                                                    Text(
+                                                      "Anglais",
+                                                      style:
+                                                          AppStyles.textStyle(
+                                                        color: AppColors
+                                                            .primaryText,
+                                                        size: 14.0,
+                                                        weight: FontWeight.w500,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      : const SizedBox(),
+                            ),
+                          ),
+                        )
+                      : const SizedBox();
+                }),
                 // true
                 // !((_transactionController.transactions != null &&
                 //             _transactionController.transactions!.isNotEmpty) ||

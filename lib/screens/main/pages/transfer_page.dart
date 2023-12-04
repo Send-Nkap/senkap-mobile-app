@@ -59,7 +59,7 @@ class TransferPage extends StatelessWidget {
                                 padding: const EdgeInsets.symmetric(
                                     vertical: 8.0, horizontal: 12.0),
                                 decoration: BoxDecoration(
-                                  color: AppColors.secondary,
+                                  color: AppColors.bgOpacColor,
                                   borderRadius: BorderRadius.circular(
                                     Constants.defaultBorderRadius * 5, //*5
                                   ),
@@ -225,7 +225,7 @@ class TransferPage extends StatelessWidget {
                               shape: BoxShape.circle),
                           child: SvgPicture.asset(
                             Assets.icons.adressBook,
-                            color: AppColors.primary,
+                            color: AppColors.white,
                           ),
                         ),
                         Padding(
@@ -259,7 +259,7 @@ class TransferPage extends StatelessWidget {
               ? Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const SectionTitleWidget(title: "Conatcts on Send Nkap"),
+                    const SectionTitleWidget(title: "Conatcts on Senkap"),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 16.0),
                       child: InputField(

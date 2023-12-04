@@ -14,7 +14,7 @@ import '../../ressources/app_styles.dart';
 import '../../ressources/commons.dart';
 import '../../ressources/constants.dart';
 import '../main/components/app_bar/app_bar_component.dart';
-import '../errors/success_screen.dart';
+import '../exceptions/success_screen.dart';
 import '../../widgets/contact_widget.dart';
 import '../../widgets/primary_button_widget.dart';
 
@@ -30,6 +30,7 @@ class TransfertMoneyScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.white,
       body: WillPopScope(
         onWillPop: () async {
           _bottomNavBarController.isOnTranfertMoneyScreen(false);
@@ -157,7 +158,7 @@ class TransfertMoneyScreen extends StatelessWidget {
                         phone: int.parse(
                             contact.phones!.first.value!.split("(237)")[1]));
                     _contactController.addContactToRecents(newRecent);
-                    Get.to(const SizeTransitionExample());
+                    Get.to(const SuccessScreen());
                     // Commons.snackBar(
                     //     bgColor: AppColors.success,
                     //     textColor: AppColors.white,
@@ -182,7 +183,7 @@ Widget keyTouch({required String touch, required bool hasMargin}) => Expanded(
           margin: hasMargin ? const EdgeInsets.only(left: 10.0) : null,
           padding: const EdgeInsets.symmetric(vertical: 25.0),
           decoration: BoxDecoration(
-            color: AppColors.bgColor,
+            color: AppColors.bgOpacColor,
             borderRadius: BorderRadius.circular(
               Constants.defaultBorderRadius * 2,
             ),
@@ -236,7 +237,7 @@ Widget iconKeyTouch({required String icon, required bool hasMargin}) =>
           margin: hasMargin ? const EdgeInsets.only(left: 10.0) : null,
           padding: const EdgeInsets.symmetric(vertical: 30.5),
           decoration: BoxDecoration(
-            color: AppColors.bgColor,
+            color: AppColors.white,
             borderRadius: BorderRadius.circular(
               Constants.defaultBorderRadius * 2,
             ),

@@ -48,8 +48,8 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: AccountVerificationStepperScreen(),
-      home: MainScreen(),
-      // home: OnBoardScreen(),
+      // home: MainScreen(),
+      home: OnBoardScreen(),
     );
   }
 }

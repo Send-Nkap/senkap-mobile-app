@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:vibration/vibration.dart';
 import '../main/main_screen.dart';
 import '../../controllers/bottom_nav_bar_controller.dart';
 import '../../gen/assets.gen.dart';
@@ -10,16 +11,16 @@ import '../../ressources/commons.dart';
 import '../../ressources/constants.dart';
 import '../../widgets/primary_button_widget.dart';
 
-class SizeTransitionExample extends StatefulWidget {
-  const SizeTransitionExample({super.key});
+class SuccessScreen extends StatefulWidget {
+  const SuccessScreen({super.key});
 
   @override
-  State<SizeTransitionExample> createState() => _SizeTransitionExampleState();
+  State<SuccessScreen> createState() => _SuccessScreenState();
 }
 
 /// [AnimationController]s can be created with `vsync: this` because of
 /// [TickerProviderStateMixin].
-class _SizeTransitionExampleState extends State<SizeTransitionExample>
+class _SuccessScreenState extends State<SuccessScreen>
     with TickerProviderStateMixin {
   late final AnimationController _controller = AnimationController(
     duration: const Duration(seconds: 3),
@@ -45,6 +46,7 @@ class _SizeTransitionExampleState extends State<SizeTransitionExample>
   @override
   void initState() {
     super.initState();
+    Commons.vibratePhone(isPatern: true);
     scaleController.addStatusListener((status) {
       if (status == AnimationStatus.completed) {
         checkController.forward();
@@ -73,7 +75,7 @@ class _SizeTransitionExampleState extends State<SizeTransitionExample>
                 horizontal: Constants.defaultHorizontalMargin * 2),
             padding: EdgeInsets.all(Constants.defaultHorizontalMargin),
             decoration: BoxDecoration(
-              color: AppColors.secondary,
+              color: AppColors.bgOpacColor,
               borderRadius: BorderRadius.circular(
                   Constants.defaultBorderRadius +
                       (Constants.defaultHorizontalMargin * 2)),
@@ -144,7 +146,7 @@ class _SizeTransitionExampleState extends State<SizeTransitionExample>
                 PrimaryButtonWidget(
                     title: "Done",
                     butttonColor: AppColors.primary,
-                    textColor: AppColors.primaryText,
+                    textColor: AppColors.white,
                     onTap: () {
                       _bottomNavBarController.setPageIndex(0);
                       // _bottomNavBarController.setPageIndex(2);

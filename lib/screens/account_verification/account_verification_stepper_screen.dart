@@ -160,7 +160,7 @@ class AccountVerificationStepperScreen extends StatelessWidget {
                       _countVerificationController.increment();
                       if (_countVerificationController
                               .pageVerificationIndex.value ==
-                          4) {
+                          5) {
                         Get.to(() => MainScreen(),
                             transition: Transition.cupertino,
                             duration: const Duration(milliseconds: 500),

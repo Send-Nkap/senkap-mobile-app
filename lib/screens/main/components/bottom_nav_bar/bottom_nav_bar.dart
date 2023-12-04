@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 import '../../../../controllers/bottom_nav_bar_controller.dart';
+import '../../../../controllers/contact_controller.dart';
 import '../../../../gen/assets.gen.dart';
 import '../../../../ressources/app_colors.dart';
 import 'components/bottom_nav_item.dart';
@@ -10,6 +11,7 @@ class BottomNavBar extends StatelessWidget {
   BottomNavBar({super.key});
   final BottomNavBarController _bottomNavBarController =
       Get.put(BottomNavBarController());
+  final ContactController _contactController = Get.put(ContactController());
 
   @override
   Widget build(BuildContext context) {
@@ -72,8 +74,26 @@ class BottomNavBar extends StatelessWidget {
                     focusColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     hoverColor: Colors.transparent,
-                    onTap: () {
+                    onTap: () async {
                       _bottomNavBarController.setPageIndex(2);
+                      if (_contactController.contacts.isEmpty) {
+                        showDialog(
+                          context: context,
+                          barrierDismissible: false,
+                          builder: (context) {
+                            return Container(
+                              color: Colors.transparent,
+                              child: const Center(
+                                child: CircularProgressIndicator(
+                                  color: AppColors.primary,
+                                ),
+                              ),
+                            );
+                          },
+                        );
+                        await _contactController.getContacts();
+                        Get.back();
+                      }
                     },
                     child: Obx(() {
                       return BottomNavItem(

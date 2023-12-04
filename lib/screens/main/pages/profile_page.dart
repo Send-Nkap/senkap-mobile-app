@@ -4,17 +4,22 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:send_nkap/gen/assets.gen.dart';
-import 'package:send_nkap/ressources/app_colors.dart';
-import 'package:send_nkap/ressources/app_styles.dart';
-import 'package:send_nkap/ressources/constants.dart';
-import 'package:send_nkap/screens/faq/faq_screen.dart';
-import 'package:send_nkap/screens/main/main_screen.dart';
-import 'package:send_nkap/widgets/input_label.dart';
+import 'package:senkap/controllers/confetti_controller.dart';
+import 'package:senkap/gen/assets.gen.dart';
+import 'package:senkap/ressources/app_colors.dart';
+import 'package:senkap/ressources/app_styles.dart';
+import 'package:senkap/ressources/commons.dart';
+import 'package:senkap/ressources/constants.dart';
+import 'package:senkap/screens/faq/faq_screen.dart';
+import 'package:senkap/screens/main/main_screen.dart';
+import 'package:senkap/widgets/input_label.dart';
+
+import '../../../controllers/profile_controller.dart';
 
 class ProfilePage extends StatelessWidget {
   ProfilePage({super.key});
-  // final ProfileController _profileController = Get.put(ProfileController());
+  final ProfileController _profileController = Get.find();
+  final AppConfettiController _appConfettiController = Get.find();
   // final UserController _userController = Get.put(UserController());
   // final TopNavBarController _topNavBarController =
   //     Get.put(TopNavBarController());
@@ -31,11 +36,11 @@ class ProfilePage extends StatelessWidget {
         children: [
           GestureDetector(
             onTap: () {
-              // if (_profileController.isLanguageBottomSheetShow.value) {
-              //   _profileController.isLanguageBottomSheetShow(false);
-              // } else if (_profileController.isLogOutBottomSheetShow.value) {
-              //   _profileController.isLogOutBottomSheetShow(false);
-              // }
+              if (_profileController.isLanguageBottomSheetShow.value) {
+                _profileController.isLanguageBottomSheetShow(false);
+              } else if (_profileController.isLogOutBottomSheetShow.value) {
+                _profileController.isLogOutBottomSheetShow(false);
+              }
             },
             child: SingleChildScrollView(
               child: Padding(
@@ -484,6 +489,14 @@ class ProfilePage extends StatelessWidget {
                                   highlightColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   onTap: () {
+                                    Commons.showAlertDialog(
+                                        context: context,
+                                        title: "Nous Contacter",
+                                        body:
+                                            "Nous joindre sur whatsapp\n wa.me/+237698509488",
+                                        isDoubleClick: true,
+                                        textButtonCancel: "Ok",
+                                        textButtonAccept: "Rejoindre");
                                     // Get.to(() => ServiceScreen());
                                   },
                                   child: Row(
@@ -615,28 +628,32 @@ class ProfilePage extends StatelessWidget {
                                         )
                                       ],
                                     ),
-                                    Row(
-                                      children: [
-                                        Text(
-                                          "On",
-                                          // _profileController
-                                          //         .isprimaryTextModeActivated
-                                          //         .value
-                                          //     ? "On".capitalize!
-                                          //     : 'Off'.capitalize!,
-                                          style: AppStyles.textStyle(
-                                            color: AppColors.primaryText,
-                                            size: 12,
-                                            weight: FontWeight.w400,
+                                    Obx(() {
+                                      return Row(
+                                        children: [
+                                          Text(
+                                            _profileController
+                                                    .isDarkModelActivated.value
+                                                ? "On".capitalize!
+                                                : 'Off'.capitalize!,
+                                            style: AppStyles.textStyle(
+                                              color: AppColors.primaryText,
+                                              size: 12,
+                                              weight: FontWeight.w400,
+                                            ),
                                           ),
-                                        ),
-                                        const SizedBox(width: 3.0),
-                                        CupertinoSwitch(
-                                          value: true,
-                                          onChanged: (bool? value) {},
-                                        ),
-                                      ],
-                                    )
+                                          const SizedBox(width: 3.0),
+                                          CupertinoSwitch(
+                                            value: _profileController
+                                                .isDarkModelActivated.value,
+                                            onChanged: (bool? value) {
+                                              _profileController
+                                                  .isDarkModelActivated(value);
+                                            },
+                                          ),
+                                        ],
+                                      );
+                                    })
                                   ],
                                 ),
                                 Padding(
@@ -668,23 +685,34 @@ class ProfilePage extends StatelessWidget {
                                           )
                                         ],
                                       ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            'Off'.capitalize!,
-                                            style: AppStyles.textStyle(
-                                              color: AppColors.primaryText,
-                                              size: 12,
-                                              weight: FontWeight.w400,
+                                      Obx(() {
+                                        return Row(
+                                          children: [
+                                            Text(
+                                              _profileController
+                                                      .isBiometricActivated
+                                                      .value
+                                                  ? "On".capitalize!
+                                                  : 'Off'.capitalize!,
+                                              style: AppStyles.textStyle(
+                                                color: AppColors.primaryText,
+                                                size: 12,
+                                                weight: FontWeight.w400,
+                                              ),
                                             ),
-                                          ),
-                                          const SizedBox(width: 3.0),
-                                          CupertinoSwitch(
-                                            value: false,
-                                            onChanged: (bool? value) {},
-                                          ),
-                                        ],
-                                      )
+                                            const SizedBox(width: 3.0),
+                                            CupertinoSwitch(
+                                              value: _profileController
+                                                  .isBiometricActivated.value,
+                                              onChanged: (bool? value) {
+                                                _profileController
+                                                    .isBiometricActivated(
+                                                        value);
+                                              },
+                                            ),
+                                          ],
+                                        );
+                                      })
                                     ],
                                   ),
                                 ),
@@ -696,8 +724,13 @@ class ProfilePage extends StatelessWidget {
                                     highlightColor: Colors.transparent,
                                     hoverColor: Colors.transparent,
                                     onTap: () {
-                                      // _profileController
-                                      //     .isLanguageBottomSheetShow(true);
+                                      if (_profileController
+                                          .isLogOutBottomSheetShow.value) {
+                                        _profileController
+                                            .isLogOutBottomSheetShow(false);
+                                      }
+                                      _profileController
+                                          .isLanguageBottomSheetShow(true);
                                     },
                                     child: Row(
                                       mainAxisAlignment:
@@ -727,18 +760,19 @@ class ProfilePage extends StatelessWidget {
                                         ),
                                         Row(
                                           children: [
-                                            Text(
-                                              "English",
-                                              // _profileController
-                                              //     .selectedLanguage
-                                              //     .value
-                                              //     .capitalize!,
-                                              style: AppStyles.textStyle(
-                                                color: AppColors.primaryText,
-                                                size: 12,
-                                                weight: FontWeight.w400,
-                                              ),
-                                            ),
+                                            Obx(() {
+                                              return Text(
+                                                _profileController
+                                                    .selectedLanguage
+                                                    .value
+                                                    .capitalize!,
+                                                style: AppStyles.textStyle(
+                                                  color: AppColors.primaryText,
+                                                  size: 12,
+                                                  weight: FontWeight.w400,
+                                                ),
+                                              );
+                                            }),
                                             const SizedBox(width: 35.96),
                                             const Icon(
                                               FontAwesomeIcons.chevronRight,
@@ -981,8 +1015,13 @@ class ProfilePage extends StatelessWidget {
                                   highlightColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   onTap: () {
-                                    // _profileController
-                                    //     .isLogOutBottomSheetShow(true);
+                                    if (_profileController
+                                        .isLanguageBottomSheetShow.value) {
+                                      _profileController
+                                          .isLanguageBottomSheetShow(false);
+                                    }
+                                    _profileController
+                                        .isLogOutBottomSheetShow(true);
                                   },
                                   child: Row(
                                     mainAxisAlignment:
@@ -1017,39 +1056,52 @@ class ProfilePage extends StatelessWidget {
                                     ],
                                   ),
                                 ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 40.0),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Row(
+                                GestureDetector(
+                                  onTap: () {
+                                    Commons.showAlertDialog(
+                                        context: context,
+                                        title: "Mise à jour",
+                                        body: "Vous etes a jour",
+                                        isDoubleClick: false,
+                                        textButtonCancel: "Ok");
+                                  },
+                                  child: Container(
+                                    child: Padding(
+                                      padding: const EdgeInsets.only(top: 40.0),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
-                                          SvgPicture.asset(
-                                            Assets.icons.circle,
-                                            color: AppColors.primary,
-                                            width: 25.0,
-                                          ),
-                                          Padding(
-                                            padding: const EdgeInsets.only(
-                                                left: 26.0),
-                                            child: Text(
-                                              "Mise à Jour",
-                                              textAlign: TextAlign.center,
-                                              style: AppStyles.textStyle(
-                                                color: AppColors.primaryText,
-                                                size: 14.0,
-                                                weight: FontWeight.w500,
+                                          Row(
+                                            children: [
+                                              SvgPicture.asset(
+                                                Assets.icons.circle,
+                                                color: AppColors.primary,
+                                                width: 25.0,
                                               ),
-                                            ),
+                                              Padding(
+                                                padding: const EdgeInsets.only(
+                                                    left: 26.0),
+                                                child: Text(
+                                                  "Mise à Jour",
+                                                  textAlign: TextAlign.center,
+                                                  style: AppStyles.textStyle(
+                                                    color:
+                                                        AppColors.primaryText,
+                                                    size: 14.0,
+                                                    weight: FontWeight.w500,
+                                                  ),
+                                                ),
+                                              )
+                                            ],
+                                          ),
+                                          const Icon(
+                                            FontAwesomeIcons.chevronRight,
+                                            size: 20.0,
                                           )
                                         ],
                                       ),
-                                      const Icon(
-                                        FontAwesomeIcons.chevronRight,
-                                        size: 20.0,
-                                      )
-                                    ],
+                                    ),
                                   ),
                                 )
                               ]),
@@ -1058,9 +1110,16 @@ class ProfilePage extends StatelessWidget {
                           padding: const EdgeInsets.only(top: 16.0),
                           child: Column(
                             children: [
-                              const Icon(
-                                FontAwesomeIcons.solidHeart,
-                                color: AppColors.primary,
+                              GestureDetector(
+                                onTap: () {
+                                  print("jsfdk");
+                                  _appConfettiController.controllerTopCenter
+                                      .play();
+                                },
+                                child: const Icon(
+                                  FontAwesomeIcons.solidHeart,
+                                  color: AppColors.primary,
+                                ),
                               ),
                               const SizedBox(height: 10.0),
                               Text(
@@ -1103,194 +1162,6 @@ class ProfilePage extends StatelessWidget {
               ),
             ),
           ),
-          // Obx(() {
-          //   return _profileController.isLogOutBottomSheetShow.value ||
-          //           _profileController.isLanguageBottomSheetShow.value
-          //       ?
-          //       Align(
-          //           alignment: Alignment.bottomCenter,
-          //           child: IntrinsicHeight(
-          //             child: Container(
-          //               padding: const EdgeInsets.only(
-          //                   top: 32.0, left: 20.0, right: 20.0, bottom: 50.0),
-          //               decoration: const BoxDecoration(
-          //                   color: AppColors.white,
-          //                   boxShadow: [
-          //                     BoxShadow(
-          //                       color: Color(0x33000000),
-          //                       blurRadius: 24,
-          //                       offset: Offset(0, -12),
-          //                       spreadRadius: 0,
-          //                     )
-          //                   ],
-          //                   borderRadius: BorderRadius.only(
-          //                       topLeft: Radius.circular(26.0),
-          //                       topRight: Radius.circular(26.0))),
-          //               child: _profileController
-          //                       .isLogOutBottomSheetShow.value
-          //                   ? Column(
-          //                       children: [
-          //                         Padding(
-          //                           padding:
-          //                               const EdgeInsets.only(bottom: 18.0),
-          //                           child: Text(
-          //                             "Déconnecter ?",
-          //                             textAlign: TextAlign.center,
-          //                             style: AppStyles.textStyle(
-          //                               color: AppColors.primaryText,
-          //                               size: 27.0,
-          //                               weight: FontWeight.w700,
-          //                             ),
-          //                           ),
-          //                         ),
-          //                         Row(
-          //                           crossAxisAlignment:
-          //                               CrossAxisAlignment.start,
-          //                           mainAxisAlignment:
-          //                               MainAxisAlignment.center,
-          //                           children: [
-          //                             GestureDetector(
-          //                               onTap: () {
-          //                                 _userController.logoutUser(context);
-          //                                 // Get.off(() => LoginScreen());
-          //                               },
-          //                               child: Container(
-          //                                 padding: const EdgeInsets.symmetric(
-          //                                     vertical: 15.0,
-          //                                     horizontal: 20.0),
-          //                                 decoration: BoxDecoration(
-          //                                     color: AppColors.primaryText,
-          //                                     borderRadius:
-          //                                         BorderRadius.circular(
-          //                                             32.0)),
-          //                                 child: Text(
-          //                                   "Continuer",
-          //                                   textAlign: TextAlign.center,
-          //                                   style: AppStyles.textStyle(
-          //                                     color: AppColors.white,
-          //                                     size: 16.0,
-          //                                     weight: FontWeight.w500,
-          //                                   ),
-          //                                 ),
-          //                               ),
-          //                             ),
-          //                             const SizedBox(width: 30.0),
-          //                             GestureDetector(
-          //                               onTap: () {
-          //                                 _profileController
-          //                                     .isLogOutBottomSheetShow(false);
-          //                               },
-          //                               child: Container(
-          //                                 padding: const EdgeInsets.symmetric(
-          //                                     vertical: 15.0,
-          //                                     horizontal: 20.0),
-          //                                 decoration: BoxDecoration(
-          //                                     color: AppColors.imputBg,
-          //                                     borderRadius:
-          //                                         BorderRadius.circular(
-          //                                             32.0)),
-          //                                 child: Text(
-          //                                   "Annuler",
-          //                                   textAlign: TextAlign.center,
-          //                                   style: AppStyles.textStyle(
-          //                                     color: AppColors.primaryText,
-          //                                     size: 16.0,
-          //                                     weight: FontWeight.w500,
-          //                                   ),
-          //                                 ),
-          //                               ),
-          //                             )
-          //                           ],
-          //                         ),
-          //                       ],
-          //                     )
-          //                   : _profileController
-          //                           .isLanguageBottomSheetShow.value
-          //                       ? Column(
-          //                           children: [
-          //                             InkWell(
-          //                               splashColor: Colors.transparent,
-          //                               focusColor: Colors.transparent,
-          //                               highlightColor: Colors.transparent,
-          //                               hoverColor: Colors.transparent,
-          //                               onTap: () {
-          //                                 _profileController
-          //                                     .selectedLanguage("Français");
-          //                                 _profileController
-          //                                     .isLanguageBottomSheetShow(
-          //                                         false);
-          //                               },
-          //                               child: Row(
-          //                                 children: [
-          //                                   Text(
-          //                                     "FR",
-          //                                     style: AppStyles.textStyle(
-          //                                       color:
-          //                                           AppColors.chatDateColor,
-          //                                       size: 14.0,
-          //                                       weight: FontWeight.w500,
-          //                                     ),
-          //                                   ),
-          //                                   const SizedBox(width: 21.0),
-          //                                   Text(
-          //                                     "Français",
-          //                                     style: AppStyles.textStyle(
-          //                                       color: AppColors.primaryText,
-          //                                       size: 14.0,
-          //                                       weight: FontWeight.w500,
-          //                                     ),
-          //                                   ),
-          //                                 ],
-          //                               ),
-          //                             ),
-          //                             Padding(
-          //                               padding:
-          //                                   const EdgeInsets.only(top: 21.0),
-          //                               child: InkWell(
-          //                                 splashColor: Colors.transparent,
-          //                                 focusColor: Colors.transparent,
-          //                                 highlightColor: Colors.transparent,
-          //                                 hoverColor: Colors.transparent,
-          //                                 onTap: () {
-          //                                   _profileController
-          //                                       .selectedLanguage("Anglais");
-          //                                   _profileController
-          //                                       .isLanguageBottomSheetShow(
-          //                                           false);
-          //                                 },
-          //                                 child: Row(
-          //                                   children: [
-          //                                     Text(
-          //                                       "EN",
-          //                                       style: AppStyles.textStyle(
-          //                                         color:
-          //                                             AppColors.chatDateColor,
-          //                                         size: 14.0,
-          //                                         weight: FontWeight.w500,
-          //                                       ),
-          //                                     ),
-          //                                     const SizedBox(width: 21.0),
-          //                                     Text(
-          //                                       "Anglais",
-          //                                       style: AppStyles.textStyle(
-          //                                         color:
-          //                                             AppColors.primaryText,
-          //                                         size: 14.0,
-          //                                         weight: FontWeight.w500,
-          //                                       ),
-          //                                     ),
-          //                                   ],
-          //                                 ),
-          //                               ),
-          //                             )
-          //                           ],
-          //                         )
-          //                       : const SizedBox(),
-          //             ),
-          //           ),
-          //         )
-          //       : const SizedBox();
-          // })
         ],
       ),
     );

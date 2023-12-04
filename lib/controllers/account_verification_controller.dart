@@ -7,7 +7,7 @@ class AccountVerificationController extends GetxController {
   RxString selectedDocument = "".obs;
 
   void increment() {
-    if (pageVerificationIndex < 4) {
+    if (pageVerificationIndex < 5) {
       pageVerificationIndex++;
     }
     if (kDebugMode) {
@@ -26,7 +26,7 @@ class AccountVerificationController extends GetxController {
   }
 
   @override
-void onInit() {
+  void onInit() {
     super.onInit();
     pageVerificationIndex = 0.obs;
   }

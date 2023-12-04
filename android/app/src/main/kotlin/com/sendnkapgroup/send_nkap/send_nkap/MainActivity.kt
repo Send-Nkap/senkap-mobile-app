@@ -1,4 +1,4 @@
-package com.sendnkapgroup.send_nkap.send_nkap
+package com.sendnkapgroup.senkap.senkap
 
 import io.flutter.embedding.android.FlutterActivity
 

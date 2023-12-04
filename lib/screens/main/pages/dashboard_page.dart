@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:send_nkap/models/chart_model.dart';
-import 'package:send_nkap/ressources/app_colors.dart';
-import 'package:send_nkap/ressources/app_styles.dart';
-import 'package:send_nkap/ressources/constants.dart';
+import 'package:senkap/models/chart_model.dart';
+import 'package:senkap/ressources/app_colors.dart';
+import 'package:senkap/ressources/app_styles.dart';
+import 'package:senkap/ressources/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 

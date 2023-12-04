@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:send_nkap/gen/assets.gen.dart';
-import 'package:send_nkap/ressources/app_colors.dart';
-import 'package:send_nkap/ressources/app_styles.dart';
-import 'package:send_nkap/ressources/constants.dart';
+import 'package:senkap/gen/assets.gen.dart';
+import 'package:senkap/ressources/app_colors.dart';
+import 'package:senkap/ressources/app_styles.dart';
+import 'package:senkap/ressources/constants.dart';
 
 class QuestionComponent extends StatelessWidget {
   final String question;

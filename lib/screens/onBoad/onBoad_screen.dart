@@ -80,7 +80,7 @@ class OnBoardScreen extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          "Welcome on Send Nkap",
+                          "Welcome on Senkap",
                           textAlign: TextAlign.center,
                           style:
                               AppStyles.textStyle(color: AppColors.secondary),
@@ -94,11 +94,11 @@ class OnBoardScreen extends StatelessWidget {
                       child: Column(
                         children: [
                           Text(
-                            _onBoardController.pageIndex.value == 1
+                            _onBoardController.pageIndex.value == 0
                                 ? "Welcome to the Future of Financial Transactions"
-                                : _onBoardController.pageIndex.value == 2
+                                : _onBoardController.pageIndex.value == 1
                                     ? "Power and Control in Your Pocket"
-                                    : _onBoardController.pageIndex.value == 3
+                                    : _onBoardController.pageIndex.value == 2
                                         ? "Ready to Redefine Your Financial Experience?"
                                         : "Your Security, Our Utmost Priority",
                             textAlign: TextAlign.center,
@@ -107,11 +107,11 @@ class OnBoardScreen extends StatelessWidget {
                           Padding(
                             padding: const EdgeInsets.only(top: 20.0),
                             child: Text(
-                              _onBoardController.pageIndex.value == 1
+                              _onBoardController.pageIndex.value == 0
                                   ? "Explore a new era of simplicity and security with our app. Discover revolutionary features designed to make managing your money as easy as possible."
-                                  : _onBoardController.pageIndex.value == 2
+                                  : _onBoardController.pageIndex.value == 1
                                       ? "Experience a comprehensive set of financial management features. From instant payments to expense tracking tools, you're in control of your financial future."
-                                      : _onBoardController.pageIndex.value == 3
+                                      : _onBoardController.pageIndex.value == 2
                                           ? "It's time to take control. Sign up now and discover how our app revolutionizes the way you manage your money. A new financial era begins here."
                                           : "We have implemented advanced security measures to protect your financial information. From robust encryption to continuous monitoring, your peace of mind is our commitment.",
                               textAlign: TextAlign.center,
@@ -145,14 +145,23 @@ class OnBoardScreen extends StatelessWidget {
                           },
                         ),
                         _onBoardController.pageIndex.value != 3
-                            ? Padding(
-                                padding: const EdgeInsets.only(
-                                    top: 20.0, bottom: 50.0),
-                                child: Text(
-                                  "Skip",
-                                  textAlign: TextAlign.center,
-                                  style: AppStyles.textStyle(
-                                      color: AppColors.white),
+                            ? GestureDetector(
+                                onTap: () {
+                                  Get.to(() => const RegisterScreen(),
+                                      transition: Transition.cupertino,
+                                      duration:
+                                          const Duration(milliseconds: 500),
+                                      curve: Curves.linear);
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 20.0, bottom: 50.0),
+                                  child: Text(
+                                    "Skip",
+                                    textAlign: TextAlign.center,
+                                    style: AppStyles.textStyle(
+                                        color: AppColors.white),
+                                  ),
                                 ),
                               )
                             : Container(

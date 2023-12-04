@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:senkap/widgets/dialog_widget.dart';
+import 'package:vibration/vibration.dart';
 import 'app_styles.dart';
 
 class Commons {
@@ -81,5 +83,43 @@ class Commons {
       // If the number doesn't match any expected format, return null or an error indication
       return 'Invalid phone number format';
     }
+  }
+
+  static Future showAlertDialog(
+      {required BuildContext context,
+      required String title,
+      required String body,
+      required String textButtonCancel,
+      String? textButtonAccept,
+      bool error = false,
+      bool isDoubleClick = false,
+      VoidCallback? callbackCancel,
+      VoidCallback? callbackAccept}) {
+    return showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return DialogWidget(
+          title: title,
+          body: body,
+          isError: error,
+          methodAccept: callbackAccept,
+          methodCancel: callbackCancel,
+          isDoubleClick: isDoubleClick,
+          textButtonCancel: textButtonCancel,
+          textButtonAccept: textButtonAccept,
+        );
+      },
+    );
+  }
+
+  static void vibratePhone({bool isPatern = false}) {
+    // if (await Vibration.hasAmplitudeControl()) {
+    if (isPatern) {
+      Vibration.vibrate(pattern: [150, 120, 150, 120]);
+    } else {
+      Vibration.vibrate(amplitude: 10, duration: 500);
+    }
+// }
   }
 }

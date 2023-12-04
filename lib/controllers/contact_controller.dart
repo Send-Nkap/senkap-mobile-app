@@ -38,7 +38,7 @@ class ContactController extends GetxController {
       }
       newContacts.toSet();
       searchContacts(contacts);
-      // TODO: check if each contact is already on Send Nkap
+      // TODO: check if each contact is already on Senkap
     }
   }
 

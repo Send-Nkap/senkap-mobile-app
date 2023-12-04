@@ -1,56 +1,56 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:send_nkap/controllers/faq_controller.dart';
-import 'package:send_nkap/ressources/app_colors.dart';
-import 'package:send_nkap/ressources/constants.dart';
-import 'package:send_nkap/screens/faq/components/question_component.dart';
+import 'package:senkap/controllers/faq_controller.dart';
+import 'package:senkap/ressources/app_colors.dart';
+import 'package:senkap/ressources/constants.dart';
+import 'package:senkap/screens/faq/components/question_component.dart';
 
 class FAQScreen extends StatelessWidget {
   FAQScreen({super.key});
   final List faqList = [
     {
-      "question": "C’est quoi une carte Virtuelle ?",
+      "question": "C’est quoi une recharge Virtuelle ?",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "Comment recharger ma carte",
+      "question": "Comment recharger mon compte",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "Dans quels pays est ce que la carte est dipsonible ?",
+      "question": "Dans quels pays puis je faire mes transferts ?",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "C’est quoi une carte Virtuelle ?",
+      "question": "C’est quoi une recharge Virtuelle ?",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "Comment recharger ma carte",
+      "question": "Comment recharger mon compte",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "Dans quels pays est ce que la carte est dipsonible ?",
+      "question": "Dans quels pays puis je faire mes transferts ?",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "C’est quoi une carte Virtuelle ?",
+      "question": "C’est quoi une recharge Virtuelle ?",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "Comment recharger ma carte",
+      "question": "Comment recharger mon compte",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },
     {
-      "question": "Dans quels pays est ce que la carte est dipsonible ?",
+      "question": "Dans quels pays puis je faire mes transferts ?",
       "response":
           "Lorem ipsum dolor sit amet consectetur. Auctor risus morbi morbi at neque leo turpis. Consectetur lectus pretium lorem tristique ornare. Condimentum a ac amet egestas suspendisse quisque nisl. Amet pellentesque venenatis vulputate facilisi id facilisis sit fringilla.",
     },

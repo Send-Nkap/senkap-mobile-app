@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.sendnkapgroup.send_nkap" "\0"
-            VALUE "FileDescription", "send_nkap" "\0"
+            VALUE "CompanyName", "com.sendnkapgroup.senkap" "\0"
+            VALUE "FileDescription", "senkap" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "send_nkap" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2023 com.sendnkapgroup.send_nkap. All rights reserved." "\0"
-            VALUE "OriginalFilename", "send_nkap.exe" "\0"
-            VALUE "ProductName", "send_nkap" "\0"
+            VALUE "InternalName", "senkap" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2023 com.sendnkapgroup.senkap. All rights reserved." "\0"
+            VALUE "OriginalFilename", "senkap.exe" "\0"
+            VALUE "ProductName", "senkap" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END
